@@ -1,0 +1,39 @@
+@import url("theme.css");
+ 
+.wy-nav-content {
+    max-width: none;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: Arial, sans-serif;
+    color: rgb(0, 142, 194);
+    font-weight: normal;
+    margin: 30px 0px 10px 0px;
+    padding: 5px 0 5px 10px;
+    text-shadow: 0px 1px 0 white
+}
+
+h1 { border-top: 20px solid white; margin-top: 0; color: rgb(255, 255, 255); font-weight: bold; font-size: 200%;background-color: rgb(  0, 142, 194); border-bottom: 5px solid rgb(  0, 142, 194);}
+h2 {                                                                             font-weight: bold; font-size: 150%;background-color: rgb(255, 255, 255); border-bottom: 5px solid rgb(  0, 142, 194);border-left: 12px solid rgb(  0, 142, 194);}
+h3 {                                                                             font-weight: bold; font-size: 120%;background-color: rgb(255, 255, 255); border-bottom: 4px solid rgb(  0, 142, 194);border-left: 10px solid rgb(  0, 142, 194);}
+h4 {                                                                                                font-size: 110%;background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(142, 142, 194);border-left:  0px solid rgb(142, 142, 194);}
+h5 {                                                                                                font-size: 100%;background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(142, 142, 194);border-left:  0px solid rgb(142, 142, 194);}
+h6 {                                                                                                font-size: 100%;background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(142, 142, 194);border-left:  0px solid rgb(142, 142, 194);}
+
+
+pre {
+    overflow: auto;
+    white-space: normal;
+    border:1px solid rgb(196, 195, 195);
+    padding:5px;
+    margin:10px;
+    background-color:rgb(240, 255, 249);
+    }
+
+.wy-table-responsive table td, .wy-table-responsive table th {
+    white-space: normal;
+}
+
+colgroup {
+    display: none;
+}
