@@ -357,16 +357,16 @@ The ``properties`` entity sets parameters that determine the default behavior of
     :header: "Entity","Content","Description","Default Value"
     :widths: 10,30,30,30
 
-    "name","bot name","The value obtained when the :ref:`bot<template_bot>` attribute name is specified as name.","(If unspecified, the value of default-get)"
-    "birthdate","bot creation date","The value obtained when the :ref:`bot<template_bot>` attribute name is specified as name.","(If unspecified, the value of default-get)"
-    "grammar_version","grammar version","The value obtained when specifying grammar_version for the :ref:`bot<template_bot>`  attribute name.","(If unspecified, the value of default-get)"
-    "app_version","app version","The value obtained when app_version is specified for the :ref:`bot<template_bot>` attribute name.","(If unspecified, the value of default-get)"
+    "name","bot name","The value obtained when the :ref:`bot<template_bot>` name attribute is specified as name.","(If unspecified, the value of default-get)"
+    "birthdate","bot creation date","The value obtained when the :ref:`bot<template_bot>` name attribute is specified as name.","(If unspecified, the value of default-get)"
+    "grammar_version","grammar version","The value obtained when specifying grammar_version for the :ref:`bot<template_bot>`  name attribute.","(If unspecified, the value of default-get)"
+    "app_version","app version","The value obtained when app_version is specified for the :ref:`bot<template_bot>` name attribute.","(If unspecified, the value of default-get)"
     "default-response","default response","Return if no pattern matches.","unknown"
     "default-get","default get","A string that can be retrieved by a get on an undefined variable.","unknown"
     "joiner_terminator","end-of-sentence character","Specifies the character string to which the ending phrase of the response sentence is added. If not specified, nothing is given.","."
     "joiner_join_chars","excluded end-of-sentence character","Specifies a string that is used to combine and exclude the joiner_terminator character when automatically appending the statement terminator with the joiner_terminator specification. If not specified, the character specified by joiner_terminator is appended.",".?!"
     "splitter_split_chars","sentence separator","Specifies the character used internally to devide a sentence. If the specified string is included in the statement, it is treated as a multiple statement, and response returns a string created by combining multiple response statements. However, metadata only returns what you set in the final statement. If not specified, the utterance is treated as one sentence.","."
-    "punctation_chars","delimiter","Specifies the character to be treated as a delimiter. Delimiters are excluded from matching, and the matching process is performed to the form created by excluding delimiters from utterance sentences and reponse sentences.","(None)"
+    "punctuation_chars","delimiter","Specifies the character to be treated as a delimiter. Delimiters are excluded from matching, and the matching process is performed to the form created by excluding delimiters from utterance sentences and reponse sentences.","(None)"
 
 * Configuration Example
 
@@ -385,7 +385,7 @@ The ``properties`` entity sets parameters that determine the default behavior of
   joiner_terminator: .
   joiner_join_chars: .?!
   splitter_split_chars: .
-  punctation_chars: ;'",!()[]：’”；
+  punctuation_chars: ;'",!()[]：’”；
 
 
 joiner_terminator
@@ -509,17 +509,17 @@ If splitter_split_chars is not specified, the utterance is not split, so matchin
 | Output: Sorry, I didn't understand.
 
 
-punctation_chars
+punctuation_chars
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Specifies the character to be treated as a delimiter.Delimiters are excluded from the matching process and are excluded from utterance sentences.
-If you have the input "Hello." and "Hello", the characters in punctation_chars are ignored and treated as the same utterance.
+If you have the input "Hello." and "Hello", the characters in punctuation_chars are ignored and treated as the same utterance.
 
 * Configuration Example
 
 .. code:: 
 
-  punctation_chars: ;'",!()[]：’”；
+  punctuation_chars: ;'",!()[]：’”；
 
 .. code:: xml
 
@@ -534,11 +534,11 @@ If you have the input "Hello." and "Hello", the characters in punctation_chars a
 | Output: Let's have a great day.
 
 
-If punctation_chars is not specified, "." is also matched, so "Hello." and "Hello" are treated as the different utterances.
+If punctuation_chars is not specified, "." is also matched, so "Hello." and "Hello" are treated as the different utterances.
 
 .. code::
 
-  punctation_chars:
+  punctuation_chars:
 
 | Input: Hello
 | Output: Let's have a great day.

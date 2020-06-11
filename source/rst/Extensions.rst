@@ -7,10 +7,6 @@ Summary
 Extensions is a feature that allows you to implement extensions separately.
 It provides a mechanism to call additional functionality by writing the full Python path in the path of the extension element.
 
-Available extensions
-----------------------------------------
-
-TBD
 
 Implementing Custom Extensions
 ----------------------------------------
@@ -22,7 +18,7 @@ The extension must inherit from the base class.
        programy.extensions.Extension
 
 The following is an example of implementation. The method that executes the contents of the extension element is execute, and implements the execute method with bot, clientid, and data as arguments.
- In data, the content of the extension element is set with a space delimiter.
+In data, the content of the extension element is set with a space delimiter.
 
 .. code:: python
 
@@ -60,5 +56,5 @@ The return value of execute() is the result of template.
        </template>
    </category>
 
-Input: What are the coordinates of Tokyo Station?
-Output: The latitude and the longitude are 35.681236, 139.767125.
+| Input: What are the coordinates of Tokyo Station?
+| Output: The latitude and the longitude are 35.681236, 139.767125.

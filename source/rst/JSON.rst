@@ -72,7 +72,7 @@ This is an example of using the subagent return value. The subagent return value
             "relative": {
                 "grandfather": [ "Shiro", "Goro" ],
                 "grandmother": [ "Kuriko", "Umeko" ],
-                "cousin": ["Kotaro" , "Sakiko"],
+                "cousin": ["Kotaro", "Sakiko"],
                 "grandchildren": [ "Aki" ]
             },
             "friend": [ "Kazuhiro", "Kyoko" ],
@@ -106,7 +106,7 @@ Getting Arrays
 
 When you get the value of "brother" which is an array, as with the getting value, 
 you get the specified array by describing the key you want to get by separating ``.`` or the child element ``<key>``.
-Get ["Jiro" , "Kikuko"] as the result of the execution.
+Get ["Jiro", "Kikuko"] as the result of the execution.
 
 .. code:: xml
 
@@ -174,19 +174,21 @@ If empty, specify ``""`` .
 
     <json var="__USER_METADATA__.profile.home.address">Shin-Yokohama</json>
     <json var="__USER_METADATA__.profile.home.coordinates">""</json>
+    <!-- <json var="__USER_METADATA__.profile.home"><key>address</key>Shin-Yokohama</json>
+        <json var="__USER_METADATA__.profile.home"><key>coordinates</key>""</json>  The same as above -->
 
 
 Before Update
 
 .. code:: json
 
-    "home": {"address" : "Minato-ku, Tokyo" , "coordinates" : "x,y"},
+    "home": {"address" : "Minato-ku, Tokyo", "coordinates" : "x,y"},
 
 After Update
 
 .. code:: json
 
-    "home": {"address" : "Shin-Yokohama" , "coordinates" : ""},
+    "home": {"address" : "Shin-Yokohama", "coordinates" : ""},
 
 
 Append to JSON Data
@@ -205,8 +207,8 @@ Before Update
 
     {
         "profile":{
-            "medical history": ["high blood pressure" , "hay fever"],
-            "allergy" : ["milk" , "egg"]
+            "medical history": ["high blood pressure", "hay fever"],
+            "allergy" : ["milk", "egg"]
         }
     }
 
@@ -216,8 +218,8 @@ After Update
 
     {
         "profile":{
-            "medical history": ["high blood pressure" , "hay fever"],
-            "allergy" : ["milk" , "egg"],
+            "medical history": ["high blood pressure", "hay fever"],
+            "allergy" : ["milk", "egg"],
             "zip-code" : "222-0033"
         }
     }
@@ -239,7 +241,7 @@ Before Update
 
     {
         "profile":{
-            "hobby": ["golf" , "baseball"]
+            "hobby": ["golf", "baseball"]
         }
     }
 
@@ -249,7 +251,7 @@ After Update
 
     {
         "profile":{
-            "hobby": ["soccer" , "baseball"]
+            "hobby": ["soccer", "baseball"]
         }
     }
 
@@ -291,7 +293,7 @@ In the example below, index = "0" is specified for "hobby" that is an array, and
 
 .. code:: xml
 
-    <json var="__USER_METADATA__.profile.hobby" function="insert" index="0">"soccer" , "fishing" , "movie watching" , "travel (overseas, domestic)" </ json>
+    <json var="__USER_METADATA__.profile.hobby" function="insert" index="0">"soccer", "fishing", "movie watching", "travel (overseas, domestic)" </ json>
     <!-- <json var="__USER_METADATA__.profile"><key>hobby</key><function>insert</function><index>0</index>"soccer","fishing", "movie watching", "travel (overseas, domestic)"</json>   The same as above -->
 
 
@@ -305,46 +307,46 @@ After Update
 
 .. code:: json
 
-            "hobby": ["soccer" , "fishing" , "movie watching" , "travel (overseas, domestic)" , "golf" , "baseball"],
+            "hobby": ["soccer", "fishing", "movie watching", "travel (overseas, domestic)", "golf", "baseball"],
 
 
 In the example below, the value is added to the end of the array by specifying index = "2" that is the number of the elements in array "hobby".
 
 .. code:: xml
 
-    <json var="__USER_METADATA__.profile.hobby" function="insert" index="2">"soccer , "fishing" , "movie watching" , "travel (overseas,domestic)"</json>
-    <!-- <json var="__USER_METADATA__.profile"><key>hobby</key><function>insert</function><index>2</index>"soccer , "fishing" , "movie watching" , "travel (overseas,domestic)"</json>   The same operation as above -->
+    <json var="__USER_METADATA__.profile.hobby" function="insert" index="2">"soccer , "fishing", "movie watching", "travel (overseas,domestic)"</json>
+    <!-- <json var="__USER_METADATA__.profile"><key>hobby</key><function>insert</function><index>2</index>"soccer , "fishing", "movie watching", "travel (overseas,domestic)"</json>   The same operation as above -->
 
 Before Update
 
 .. code:: json
 
-            "hobby": ["golf" , "baseball"],
+            "hobby": ["golf", "baseball"],
 
 After Update
 
 .. code:: json
 
-            "hobby": ["golf" , "baseball" , "soccer" , "fishing" , "movie watching" , "travel (overseas, domestic)"],
+            "hobby": ["golf", "baseball", "soccer", "fishing", "movie watching", "travel (overseas, domestic)"],
 
 Similarly, index = "-1" adds a value to the end of the array.
 
 .. code:: xml
 
-    <json var="__USER_METADATA__.profile.hobby" function="insert" index="-1">"soccer , "fishing" , "movie watching" , "travel (overseas,domestic)"</json>
-    <!-- <json var="__USER_METADATA__.profile"><key>hobby</key><function>insert</function><index>-1</index>"soccer , "fishing" , "movie watching" , "travel (overseas,domestic)"</json>  The same as above -->
+    <json var="__USER_METADATA__.profile.hobby" function="insert" index="-1">"soccer , "fishing", "movie watching", "travel (overseas,domestic)"</json>
+    <!-- <json var="__USER_METADATA__.profile"><key>hobby</key><function>insert</function><index>-1</index>"soccer , "fishing", "movie watching", "travel (overseas,domestic)"</json>  The same as above -->
 
 Before Update
 
 .. code:: json
 
-            "hobby": ["golf" , "baseball"],
+            "hobby": ["golf", "baseball"],
 
 After Update
 
 .. code:: json
 
-            "hobby": ["golf" , "baseball" , "soccer" , "fishing" , "movie watching" , " travel (oversea, domestic)"],
+            "hobby": ["golf", "baseball", "soccer", "fishing", "movie watching", " travel (oversea, domestic)"],
 
 Creating Arrays
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -356,7 +358,7 @@ The following example creates a "education" as a new array element.
 
 .. code:: xml
 
-    <json var="__USER_METADATA__.profile.education"> "A Elementary School" , "B Junior High School" , "C high school" , "D University" </json>
+    <json var="__USER_METADATA__.profile.education"> "A Elementary School", "B Junior High School", "C high school", "D University" </json>
     <!-- <json var="__USER_METADATA__.profile.education" function="insert" index="0"> "A Elementary School", "B Junior High School", "C high school", "D University" </json> The same as above -->
     <!-- <json var="__USER_METADATA__.profile.education" function="insert" index="-1"> "A Elementary School", "B Junior High School", "C high school", "D University" </json> The same as above -->
     <!-- <json var="__USER_METADATA__.profile"><key>education</key><function>insert</function><index>0</index> "A Elementary School", "B Junior High School", "C high school", "D University" </json> The same as above -->
@@ -367,8 +369,7 @@ After creation
 
             "education":["A Elementary School","B Junior High School","C high school","D University"]
 
-In the case of an array with only one element, if insert is not specified for function, a JSON object is created, so insert is required for the function.
-(It is not possible to change a JSON object to an array by specifying function with insert. It must first be created as an array element.)
+In the case of a single element, a JSON object can be created without specifying insert in the function, but it cannot be changed to an array by specifying insert. If you have more than one element, you need to create it as an array element.
 
 .. code:: xml
 
@@ -409,16 +410,16 @@ A negative index represents a trailing index value, and index = -1 deletes the l
 
 .. code:: XML
 
-    <json var="__USER_METADATA__.profile.hobby index="0" function="delete" />
+    <json var="__USER_METADATA__.profile.hobby" index="0" function="delete" />
     <!-- <json var="__USER_METADATA__.profile.hobby"><index>0</index><function>delete</function></json>  The same as above -->
-    <json var="__USER_METADATA__.profile.hobby index="-1" function="delete" />
+    <json var="__USER_METADATA__.profile.hobby" index="-1" function="delete" />
     <!-- <json var="__USER_METADATA__.profile.hobby"><index>-1</index><function>delete</function></json>  The same as above -->
 
 Before Update
 
 .. code:: json
 
-            "hobby": ["golf" , "baseball" , "reading"],
+            "hobby": ["golf", "baseball", "reading"],
 
 After Update
 
@@ -438,22 +439,22 @@ Delete the "hobby" key and value by specifying "delete" for "function".
 .. code:: xml
 
     <json var="__USER_METADATA__.profile.hobby" function="delete" />
-    <!-- <json var="__USER_METADATA__.profile.hobby"><function>delete</function><json>  The same as above -->
+    <!-- <json var="__USER_METADATA__.profile.hobby"><function>delete</function></json>  The same as above -->
 
 Before Update
 
 .. code:: json
 
-            "friend": ["Kazuhiro" , "Kyoko"],
-            "hobby": ["golf" , "baseball"],
-            "medical history": ["high blood pressure" , "hay fever"],
+            "friend": ["Kazuhiro", "Kyoko"],
+            "hobby": ["golf", "baseball"],
+            "medical history": ["high blood pressure", "hay fever"],
 
 After Update
 
 .. code:: json
 
-            "friend": ["Kazuhiro" , "Kyoko"],
-            "medical history": ["high blood pressure" , "hay fever"],
+            "friend": ["Kazuhiro", "Kyoko"],
+            "medical history": ["high blood pressure", "hay fever"],
 
 
 Specify JSON format data
@@ -465,6 +466,7 @@ Although it can be specified by array operation, it is necessary to specify one 
 .. code:: XML
 
     <json var="__USER_METADATA__.profile.family.father">{"name": "Taro", "age": 80}</json>
+    <!-- <json var="__USER_METADATA__.profile.family"><key>father</key>{"name": "Taro", "age": 80}</json>  The same as above -->
 
 Before Update
 
@@ -492,7 +494,7 @@ To :ref:`set<template_set>` a variable to JSON formatted content, use the set el
     <!-- Configurable --> <set var="__USER_METADATA__">{"profile": {"family": {"father": {"name": "Taro", "age": 80}}}}</set>
 
 
-See: :doc:`SubAgent<SubAgent>` ,:doc:`Metadata<Metadata>` ,:doc:`intent recognition<NLU>` 
+See: :doc:`SubAgent<SubAgent>` ,:doc:`metadata<Metadata>` ,:doc:`intent recognition<NLU>` 
 
 
 Handling of Numeric, Boolean, and null
@@ -529,7 +531,7 @@ The setting result of the example is the following JSON.
     {
         "profile": {
             "age": 30,
-            "fullage": ”31 years old",
+            "fullage": "31 years old",
             "birthday": "01011970",
             "self-introduction": null,
             "telephone-authentication": true,
@@ -540,8 +542,8 @@ The setting result of the example is the following JSON.
 Getting
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When getting numeric value, boolean value, and null in JSON element, these are obtained as character strings.
-In the case of a numeric value, it is obtained as a numeric character string, in the case of a boolean value, it is obtained as a character string of "true", "false", and in the case of null, it is obtained as a character string of "null".
+When a JSON element gets a numeric value, a boolean, or a null, these are obtained as a string.
+If it is a numeric value, it will be obtained as a numeric string, if it is true or false, it will be obtained as a string of "true" or "false", if it is null, it will be obtained as a string of "null".
 
 Example:
 

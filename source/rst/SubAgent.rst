@@ -10,7 +10,7 @@ Describes how to invoke the external service specified by sraix.
 There are three ways to call external services.
 
 * Generic REST interface
-    If "botId"/"service" is not specified in the attribute, the external service is invoked as a REST-API using the child elements of host, header, query, body, etc.
+    If "botId", "service" is not specified in the attribute, the external service is invoked as a REST API using the child elements of host, header, query, body, etc.
 * Public bot calls on the dialog platform
     If the attribute is "botId", it calls the bot exposed on the dialog platform.
 * Custom External Service Implementation
@@ -41,7 +41,7 @@ There are three ways to call external services.
 Generic REST interface
 ----------------------------------------
 
-If the attribute "botId"/"service" of sraix is unspecified, the external service is invoked as a REST-API using the child elements of host, header, query, body, etc.
+If the attribute "botId", "service" of sraix is unspecified, the external service is invoked as a REST API using the child elements of host, header, query, body, etc.
 
 
 Send
@@ -93,7 +93,7 @@ Sent
         "question":"Ask this question"
     }
 
-When specifying the metadata specified by the dialog API in the body, get __USER_METADATA__ in the json tag and set it in the child element "body".
+When specifying the ``metadata`` specified by the dialog API in the body, get ``__USER_METADATA__`` in the json tag and set it in the child element "body".
 
 .. code:: xml
 
@@ -118,7 +118,7 @@ Receive
 
 | Returns the body contents of the receive result as the result of the sraix.
 | Because AIML can only handle text, it does not support binary bodies.
-| The receive results are also expanded to the local variable (var):  ``__SUBAGENT_BODY__`` .By specifying <get var = "__ SUBAGENT_BODY __"> in get, the string of the body can be obtained.
+| The receive results are also expanded to the local variable (var):  ``__SUBAGENT_BODY__`` . By specifying <get var = "__ SUBAGENT_BODY __"> in get, the string of the body can be obtained.
 | The contents of local variables (var) are held in category units, so it should be assigned to the global variable (name/data) separately when you use the contents of responses continuously.
 | Also, if the generic REST interface is called more than once within a category, the ``__SUBAGENT_BODY__`` is overwritten, so assign the required response to a variable.
 
@@ -141,7 +141,7 @@ The contents of the body is,
         }
     }
 
-, then
+then
 
 .. code:: xml
 
@@ -177,7 +177,7 @@ The following is an example of using a bot call exposed on a dialog platform.
 Public bot calls on dialog platforms
 --------------------------------------------
 
-When "botId" is specified in the attribute of sraix, bot (public Bot) published on the dialog platform is called.
+When "botId" is specified in the attribute of sraix, bot (public bot) published on the dialog platform is called.
 The "botId" is the ID of the bot and specified by the dialog platform, and the content of sraix is sent as an input sentence (utterance sentence) to the public bot.
 The content returned from the public bot is in JSON format specified in the received data of the :ref:`dialog API<coversation_api>` , and the return value of sraix returns the response element within it.
 
@@ -197,10 +197,10 @@ The following example is for a public bot that returns "Ok" as a response.
    </category>
 
 | Input: bot status check public bot
-| Output: Public bot status is OK.
+| Output: The status of public bot status is OK.
 
 
-| Describe the parameters as chile elements when using the public bot The content of the child element is sent as the content of the body of the :ref:`dialog API<coversation_api>` .
+| Describe the parameters as chile elements when using the public bot. The content of the child element is sent as the content of the body of the :ref:`dialog API<coversation_api>` .
 | See :ref:`dialog API<coversation_api>` , about the meaning of child elements.
 | If not specified, some elements inherit what is specified in the dialog API. If the element does not need to inherit anything, child elements must be configured (null string, etc.).
 | (For sraix, if no user ID is specified, uses another ID generated from the user ID specified in the dialog API.)
@@ -219,7 +219,7 @@ The following example is for a public bot that returns "Ok" as a response.
     "Delete Task Variable","deleteVariable","boolean","No","No"
     "Metadata","metadata","string","No","Yes"
     "Configure","config","","No","No"
-    "","logLevel","string","No","No"
+    "LogLevel","logLevel","string","No","No"
 
 
 In the following example, topic, deleteVariable, metadata, and config are specified in a scenario and locale and time are specified by inheriting the contents of the coller's request.
@@ -250,7 +250,7 @@ In the following example, topic, deleteVariable, metadata, and config are specif
 Receive
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The "response" element in the body (JSON format) received from the public Bot will be set as the return value of sraix. 
+The "response" element in the body (JSON format) received from the public bot will be set as the return value of sraix. 
 In the following example, if the received data from sameBot is 
 
 ..  code:: json
@@ -280,7 +280,7 @@ then the following AIML results are,
 
 
 
-Reception from a public Bot is expanded to the local variable (var) ``__SUBAGENT_EXTBOT__.botID`` and can be obtained with the get.
+Reception from a public bot is expanded to the local variable (var) ``__SUBAGENT_EXTBOT__.botID`` and can be obtained with the get.
 In addition, the variable is held in category units, so it must be assigned to the global variable (name/data) to use it continuously.
 
 .. code:: xml
@@ -288,7 +288,7 @@ In addition, the variable is held in category units, so it must be assigned to t
     <json var="__SUBAGENT_EXTBOT__.sameBot" />
 
 Because the body content from the public bot is JSON, you can get the parameters inside JSON with :ref:`json<template_json>` tag. 
- If the ``metadata`` content is JSON, the JSON tag can also retrieve the parameters in  ``metadata`` .
+If the ``metadata`` content is JSON, the JSON tag can also retrieve the parameters in  ``metadata`` .
 
 If the metadata content is
 
@@ -296,7 +296,7 @@ If the metadata content is
 
         "metadata":{"broadcaster":"OBS","title":"afternoon news"}
 
-, then
+then
 
 .. code:: xml
 
@@ -316,7 +316,7 @@ Custom External Service Implementation
 ----------------------------------------
 
 If the attribute is set to "service", then the custom implementation can be used to call external services. 
-The custom external service inherits the following base class and is implemented individually for the calling method that requires implementation for each service (SubAgent) used.
+Custom external services are implemented individually by inheriting the following base classes, since each service (SubAgent) used has its own call method that needs to be implemented.
 
 .. code:: python
 
@@ -380,7 +380,7 @@ Arguments
 
 The sraix service="myService" is a custom external service call that treats the inside of a sraix element as an argument.
 Argument definitions depend on the argument I/F of each custom external service and must be implemented for each service.
-The following example uses an external service called myService and assumes four arguments.
+The following example uses an external service called myService and assumes that four arguments are set.
 
 .. code:: xml
 
@@ -410,7 +410,7 @@ The following example uses an external service called myService and assumes four
 Return Values
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The return value of the custom external service, that is, the return value of ask_question() function of the individual implementation, expands to the local variable (var)  ``__SUBAGENT__.service name `` . 
+The return value of the custom external service, that is, the return value of ask_question() function of the individual implementation, expands to the local variable (var)  ``__SUBAGENT__.service name``. 
 These variables are held in category units, so they must be assigned to global variables (name/data) when it is used continuously.
 
 The format stored in the variable can be text or JSON, and the custom implementation cannot use binaries.
@@ -433,7 +433,7 @@ In the following example, the return value of the operation on myService is expa
         }
     }
 
-,then
+then
 
 .. code:: xml
 
@@ -444,4 +444,4 @@ As a, you can use the json tag to get internal information about the body.
 ``__SUBAGENT__.myService`` is text, it will be retrieved with the get tag.
 
 
-See Also: :doc:`Metadata <Metadata>`, :doc:`Dialog API <../Api>`, :doc:`JSON <JSON>`
+See Also: :doc:`metadata <Metadata>`, :doc:`Dialog API <../Api>`, :doc:`JSON <JSON>`

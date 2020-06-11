@@ -5,9 +5,9 @@ NLU
 | If ``nlu`` is defined as a child element of pattern, it is evaluated for matching the intent of the intent recognition.
 | In the dialog control, the rule base intention interpretation is carried out according to the description of the scenario, and the response is returned according to the result of the evaluation by pattern matching. If there is no matching pattern, it performs dialog control using the intent result of advanced intent interpretation.
 | This is to give priority to what the scenario developer describes rather than the result of intent recognition.
-| As an exception, if there is a category in which only wildcards are described as patterns, the matching process is performed after not matching both the scenario description matching and the intent recognition matching.
+| As an exception, if there is a category in the pattern that only describes wildcards, the wildcard-only matching process will be performed after both scenario description matching and intent recognition matching have failed to match.
 | Even if you define nlu for a child element, the contents of the pattern element do the usual pattern evaluation.
-| For nlu element attributes, see :ref:`nlu<pattarn_nlu>` .
+| For nlu element attributes, see :ref:`nlu<pattern_nlu>` .
 
 .. _nlu_json_example:
 
@@ -97,8 +97,8 @@ Match with score specification
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 | Describes the match condition by the score value of the intent.
-| As an attribute, five conditions of scoreGt, scoreGe, score, scoreLe and scoreLt can be specified, and they have the following meanings.
-| Also, if this attribute is specified, ``maxLikelihood`` is treated as ``false`` for reliability comparison matching.
+| Five types of attributes, scoreGt, scoreGe, score, scoreLe, and scoreLt, can now be specified, and the settings are as follows.
+| Also, if this attribute is specified, ``maxLikelihood`` will be treated as ``false`` for comparison matching by confidence.
 
 .. csv-table::
     :header: "Parameter Name","Meaning","Description"
@@ -120,7 +120,7 @@ The operation when scoreXx is specified is the following matching.
     <nlu intent="aroundsearch" scoreLe="0.8"/>  Matching aroundsearch.
     <nlu intent="aroundsearch" scoreLt="0.8"/>  Do not match aroundsearch.
 
-| In addition, as shown in the following example, a description in which multiple conditions are satisfied depending on the result of intent recognition is possible, but a description in which category is described in the earlier order in the AIML file is applied.
+| As shown in the following example, it is possible to describe multiple conditions depending on the result of Intent Recognition, but the order of category in the AIML file is the first to be applied.
 | When multiple AIML files are used, the AIML expansion process is performed in ascending order by directory name and file name, so the order must be kept in mind.
 | (If a subdirectory is used, the files in the upper directory are processed before moving to the file processing under the subdirectory.)
 
@@ -201,7 +201,7 @@ Here is an example of using a JSON element to get data for  :ref:`an example of 
 | Input:  I want to go from Tokyo to Kyoto.
 | Output: Tokyo has a score of 0.85.
 
-See also: :ref:`nlu<pattarn_nlu>`、 :doc:`JSON element <JSON>`
+See also: :ref:`nlu<pattern_nlu>`、 :doc:`JSON element <JSON>`
 
 
 .. _nlu_intent_example:

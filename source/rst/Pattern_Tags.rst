@@ -47,7 +47,7 @@ bot
     *
       + name
       + String
-      + yes
+      + Yes
       + Specifies the bot property name.
 
 * Use Case
@@ -89,7 +89,7 @@ The iset element is used to describe a small number of target words without usin
     *
       + words
       + String
-      + yes
+      + Yes
       + Enter the words to be matched by separating them with commas.
 
 * Use Case
@@ -112,7 +112,7 @@ The iset element is used to describe a small number of target words without usin
 
 See also: `set <#set>`__
 
-.. _pattarn_nlu :
+.. _pattern_nlu :
 
 nlu
 ----------
@@ -135,7 +135,7 @@ nlu
     *
       + intent
       + String
-      + yes
+      + Yes
       + Specifies the intent name to match.
     *
       + scoreGt
@@ -390,7 +390,7 @@ set
 
 | Specify the match processing with a word set.
 | The words to be matched are listed in the sets file in a list format and stored under the directory specified by config.
-| In the attribute name of the set, set a character string excluding the extension from the file name of the sets file.
+| In the name attribute of the set, set a character string excluding the extension from the file name of the sets file.
 
 * Attribute
 

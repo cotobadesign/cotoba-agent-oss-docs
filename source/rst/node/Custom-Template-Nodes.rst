@@ -1,8 +1,8 @@
 Custom template element
 ============================
 
-| The parser supports the complete set of system-defined AIML tags contained in template_nodes.conf.
-| You can modify this file to change the implementation of the element or add your own elements.
+| The parser supports all AIML tags defined in the system, including template_nodes.conf.
+| template_nodes.conf also allows you to change the implementation of an element or add your own.
 | ``Changing the implementation of an element may cause the parser to stop working or have a significant effect on performance or the behavior of other elements, so use it only after understanding the overall behavior.``
 
 
@@ -61,12 +61,12 @@ Custom template element
    search = programy.parser.template.nodes.search.TemplateSearchNode
 
 | Each template element inherits the ``programy.parser.template.nodes.base.TemplateNode``  as a base class.
-| The base class in the template  place, which encapsulates XML elements in node attributes of the template class. It is also used to evaluate textualization including child elements during template evaluation.
+| programy.parser.template.nodes.base.TemplateNode is the base class of a template element, which encapsulates an XML element into the node attributes of the template class. It is also used to evaluate textification, including child elements, during template evaluation.
 
-The main methods to override are the following:
+The main methods to override are the following.
 
--  ``def parse_expression(self, graph, expression)`` - Parses to an element in xml. If not, throw appropriate exception if necessary.
--  ``def resolve_to_string(self, bot, clientid)`` - Expands an element to a string (response). Called by resolve().
--  ``def resolve(self, bot, clientid)`` - Called by brain to expand each template element into a string (response statement). If there is a way to create a string, follow the child elements and process sequentially, combine the strings.
--  ``def to_string(self)`` - This method converts element information to a string representation for debugging or logging.
--  ``def to_xml(self, bot, clientid)`` - Converts element content to XML format. This can be used to create an aiml file as part of :ref:`learnf<template_learnf>`, or to output to `Braintree`  in XML format.
+-  ``def parse_expression(self, graph, expression)`` - Parsing to the elements of XML. If it can't be expanded, throw an appropriate exception if necessary.
+-  ``def resolve_to_string(self, bot, clientid)`` - Expand an element into a string (response), which is called by resolve().
+-  ``def resolve(self, bot, clientid)`` - It is called by brain to expand individual template elements into a string. Iterates through child elements to create a string and concatenates them.
+-  ``def to_string(self)`` - A method that converts element information to a string representation for debugging and logging purposes.
+-  ``def to_xml(self, bot, clientid)`` - Converts the content of an element to XML format. This is a method that can be used to create an aiml file as part of the :ref:`learnf<template_learnf>` or to output to `Braintree` in XML format.

@@ -1,7 +1,7 @@
 ========================
 About COTOBA AIML
 ========================
-COTOBA AIML is a dialog language used to describe dialog scenarios in COTOBA Agent, the dialog platform of COTOBA DESIGN, Inc. Based on AIML (Artificial Intelligence Markup Language), COTOBA DESIGN, Inc. has developed its own extensions to enable dialog control using information other than COTOBA Agent, such as JSON handling, metadata processing from APIs, and dialog control by calling RESTAPIs and referencing return values.
+COTOBA AIML is a dialog language used to describe dialog scenarios in COTOBA Agent, the dialog platform of COTOBA DESIGN, Inc. Based on AIML (Artificial Intelligence Markup Language), COTOBA DESIGN, Inc. has developed its own extensions to enable dialog control using information other than COTOBA Agent, such as JSON handling, metadata processing from APIs, and dialog control by calling REST API and referencing return values.
 
 
 How to describe the COTOBA AIML
@@ -9,7 +9,7 @@ How to describe the COTOBA AIML
 
 This section explains how to describe a dialog scenario. Here is an example of a basic dialog scenario in which we describe the response of the dialog platform to the content of the user's speech.
 
-By combining the contents of the COTOBA AIML reference, you can create a variety of dialog scenarios for holding variables, using JSON, and calling RESTAPI.
+By combining the contents of the COTOBA AIML reference, you can create a variety of dialog scenarios for holding variables, using JSON, and calling REST API.
 
 
 Basic Dialog Scenario
@@ -25,13 +25,13 @@ The category element is the basic unit of the dialog rule of AIML. The category 
 
         <category>
             <pattern>Good morning.</pattern>
-            <template>Good morning . Let's do our best today!</template>
+            <template>Good morning. Let's do our best today!</template>
         </category>
 
     </aiml>
 
 | Input: Good morning.
-| Output: Good morning . Let's do our best today!
+| Output: Good morning. Let's do our best today!
 
 
 Branching of the Response
@@ -91,8 +91,8 @@ It also returns the content of the response, which is held by the petname.
     <category>
         <pattern>My pet is *.</pattern>
         <template>
-            I guess you like a <think><set name="petcategory"><star/></set></think>
-            <star/>.
+            <think><set name="petcategory"><star/></set></think>
+            I guess you like <star/>.
         </template>
     </category>
 
@@ -116,7 +116,7 @@ It also returns the content of the response, which is held by the petname.
     </category>
 
 | Input: My pet is a dog.
-| Output: I guess youlike a dog.
+| Output: I guess you like a dog.
 | Input: My pet's name is Maron.
 | Output: That's a good name.
 | Input: Do you remember my pet?
@@ -165,7 +165,7 @@ When using the model created by the intent recognition engine, the inference end
 
 Use NLU elements to create a pattern branching scenario with intent of the intent recognition  engine. In this case, the intent and slot for the intent recognition engine can be obtained by using the nluintent and nluslot element.
 
-In addition, the dialog platform performs a rule-based intent recognition according to the description of the scenario and returns a response according to the results evaluated by pattern matching, but if there is no matching pattern, the dialog control is performed using the intent results of the intent recognition. This is to give priority to what the scenario author describes over the consequences of the intent recognition. As an exception, if there is a category with only a wildcard as a pattern, the match is processed after both the scenario description match and the intent recognition match fail to match. Even if you define a child element nlu, the contents of the pattarn element will still result in the usual pattern evaluation; see nlu for the attributes of nlu elements.
+In addition, the dialog platform performs a rule-based intent recognition according to the description of the scenario and returns a response according to the results evaluated by pattern matching, but if there is no matching pattern, the dialog control is performed using the intent results of the intent recognition. This is to give priority to what the scenario author describes over the consequences of the intent recognition. As an exception, if there is a category with only a wildcard as a pattern, the match is processed after both the scenario description match and the intent recognition match fail to match. Even if you define a child element nlu, the contents of the pattern element will still result in the usual pattern evaluation; see :ref:`nlu<pattern_nlu>`  for the attributes of nlu elements.
 
 In the following example, if the result of the intent recognition engine is "Restaurant Search", it matches the pattern and returns the intent list and slot list of the intent recognition engine.
 

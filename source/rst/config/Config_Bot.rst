@@ -15,7 +15,7 @@ In addition, it consists of the following subsections such as bot string process
 -  :doc:`conversations <Config_Bot_Conversation>`
 -  :doc:`splitter/joiner <Config_Bot_Sentence>`
 -  :doc:`spelling <Config_Bot_Spelling>`
--  :doc:`transration <Config_Bot_Translation>`
+-  :doc:`translation <Config_Bot_Translation>`
 -  :doc:`sentiment <Config_Bot_Sentiment>`
 
 Configuration Example
@@ -57,13 +57,13 @@ Configuration Example
         load: false
 
         joiner:
-            classname: programy.dialog.joiner.joiner_jp.SentenceJoiner
+            classname: programy.dialog.joiner.joiner.SentenceJoiner
             join_chars: .?!。？！
-            terminator: 。
+            terminator: .
 
         splitter:
-            classname: programy.dialog.splitter.splitter_jp.SentenceSplitter
-            split_chars: 。
+            classname: programy.dialog.splitter.splitter.SentenceSplitter
+            split_chars: .
 
 
 

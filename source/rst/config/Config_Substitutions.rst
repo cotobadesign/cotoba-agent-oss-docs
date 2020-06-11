@@ -1,11 +1,11 @@
-Replace Config
+Config Substitutions
 ===========================
 
-Replacing a License Key
+License Key Substitutions
 -------------------------
 
-- Function to replace the setting value of license.keys
- When the configuration item of the config is specified as ``LICENSE_KEY:VALUE`` , it is a function to replace it with the value of license.keys.
+- Function to substitute the setting value of license.keys
+ When the configuration item of the config is specified as ``LICENSE_KEY:VALUE`` , it is a function to substitute it with the value of license.keys.
 
 
 Configuration Example
@@ -20,7 +20,7 @@ Configuration Example
        username: LICENSE_KEY:EMAIL_USERNAME
        password: LICENSE_KEY:EMAIL_PASSWORD
 
-The following entry in license.keys replaces the LICENSE_KEY:VALUE above with the contents of license.keys at runtime.
+The following entry in license.keys substitutes the LICENSE_KEY:VALUE above with the contents of license.keys at runtime.
 
 .. code:: text
 
@@ -32,11 +32,11 @@ If you use git, setting license.keys to .gitignore prevents you from unintention
 
 .. _config_subsitutions:
 
-Command line options replacing
+Command Line Option Subsutitutions
 ---------------------------------------
 
 | When you start the dialog engine with the substitutions.txt file as a command line argument, you can specify parameters to be substituted as startup arguments.
-| Replace with the file specified by the --subs command line option.
+| Substitute with the file specified by the command line option --subs.
 
 Configuration Example
 
@@ -57,4 +57,4 @@ The following entry in substitutions.txt will replace the above $VALUE with the 
    $EMAIL_HOST:prod_server.com
    $EMAIL_PORT:9999
 
-This allows you to set ``--subs substitutions.txt``  and the replacement list at startup, without editing the config contents, and change the settings at runtime.
+This allows you to set ``--subs substitutions.txt``  and the substitution list at startup, without editing the config contents, and change the settings at runtime.

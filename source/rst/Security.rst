@@ -1,15 +1,16 @@
 Security
 ============================
 
-There are two levels of security definitions: authentication and authorization.
+There are two levels of security definitions: authentication and authorisation.
 
 Authentication
 ----------------------------
 
 Authentication is implemented within the core code brain.
-Ask_question is called for each user inquiry.
+ask_question is called for each user inquiry.
 One of its parameters is 'clientid', which is an ID for each user making utterance.
-It is 'console' in the case of console client, but when accessing by multiple names such as REST access, it is necessary to assign a unique ID.
+It is recommended that you perform the necessary authentication procedures separately.
+In the following example, the 'clientid' is set to 'console' for the console client, but if multiple people are accessing the site, such as by REST, it is necessary to assign a unique ID.
 
 .. code:: python
 
@@ -20,7 +21,7 @@ It is 'console' in the case of console client, but when accessing by multiple na
                    logging.error("[%s] failed authentication!")
                    return self.authentication.configuration.denied_srai
 
-The authentication service is defined by a dynamically loaded class, and its base class is defined as follows:
+The authentication service is defined by a dynamically loaded class, and its base class is defined as follows。。
 
 .. code:: python
 
@@ -76,7 +77,7 @@ For more advanced authentication, an external service can be implemented, but it
                logging.error(str(excep))
                return False
 
-To enable this feature, you must enable the following in the Security section of config.yaml:
+To use the above features, the following items must be enabled in the Security section of config.yaml.
 
 .. code:: yaml
 
@@ -91,24 +92,24 @@ To enable this feature, you must enable the following in the Security section of
     :widths: 30,70
 
     "classname","Defines the path to python which implements the base class 'Authenticator'."
-    "denied_srai","If authentication fails, the interpreter can use the document defined in this configuration as a SRAI. (In the above example, 'AUTHENTICATION_FAILED' is set to SRAI.). The aiml file must contain this as a category pattern with appropriate text to indicate that access is denied."
+    "denied_srai","If authentication fails, the interpreter can use the document defined in this configuration as a SRAI. (In the above example, 'AUTHENTICATION_FAILED' is set to SRAI.). The AIML file must contain this as a category pattern with appropriate text to indicate that access is denied."
 
 
-Authorization
+Authorisation
 ----------------------------
 
-Authentication is defined by users, groups, and roles.
+Authorisation is defined by users, groups, and roles.
 
 .. csv-table::
     :header: "Parameter Name","Description"
     :widths: 30,70
 
-    "User","Define authorization information for a single user. By including users in one or more groups, you can assign both specific and inherited roles."
+    "User","Define authorisation information for a single user. By including users in one or more groups, you can assign both specific and inherited roles."
     "Group","A group of users assigned one or more roles."
     "Role","An arbitrary authority string to be assigned to the user group."
 
 
-The base authorization class is defined as follows:
+The base authorisation class is defined as follows。
 
 .. code:: python
 
@@ -127,7 +128,7 @@ The base authorization class is defined as follows:
        def authorise(self, userid, role):
            return False
 
-The implementation of this base class for user, group, and role-based authorization is as follows:
+The implementation of this base class for user, group, and role-based authorisation is as follows。
 
 .. code:: python
 
@@ -158,7 +159,7 @@ The implementation of this base class for user, group, and role-based authorizat
            else:
                return False
 
-Set the config as follows.
+To use the above features, the following items must be enabled in the Security section of config.yaml.
 
 .. code:: yaml
 
@@ -174,10 +175,10 @@ Set the config as follows.
     :widths: 30,70
 
     "classname","Define the path of python that implements the base class ‘Authenticator’."
-    "denied_srai","If authentication fails, the interpreter can use the document defined in this configuration as a SRAI. (In the above example, 'AUTHENTICATION_FAILED' is set to SRAI.). The aiml file must contain this as a category pattern with appropriate text to indicate that access is denied."
+    "denied_srai","If the authentication fails, the interpreter can use the text defined in the configuration as the SRAI. (In the above example, 'AUTHORISATION_FAILED' is set to SRAI.) The AIML file should be included as a category pattern with appropriate text to indicate that access is denied."
     "usergroups","Specify users, user groups, and role configuration files."
 
-The role file has the following format:
+The format of the role file is as follows.
 
 .. code:: yaml
 
@@ -199,7 +200,7 @@ The role file has the following format:
        roles:
          ask
 
-When using the AIML authorization method, enclose the template in the 'authorise' tag.
+When using the AIML authorisation method, enclose the template in the 'authorise' tag.
 If the input is ''ALLOW ACCESS'' and the user does not have the 'root' privilege associated with them, then SRAI is set to what is defined in denied_srai.
 
 .. code:: xml

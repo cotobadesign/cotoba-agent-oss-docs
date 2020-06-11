@@ -235,7 +235,7 @@ button
 [2.1]
 
 The button element is a rich media element used to prompt the user to tap during a conversation.
-Text used for the notation of button, postback for Bot, url when button is pressed can be described as child elements.
+Text used for the notation of button, postback for Bot, URL when button is pressed can be described as child elements.
 
 * Child element
 
@@ -906,12 +906,12 @@ get
 * Child element
 
 .. csv-table::
-    :header: "Parameter","","Type","Required","Description"
-    :widths: 10,10,10,5,65
+    :header: "Parameter","Type","Required","Description"
+    :widths: 10,10,5,65
 
-    "name","","Variable Name","Yes","var, name, or data must be set."
-    "var","","Variable Name","Yes","var, name, or data must be set."
-    "data","","Variable Name","Yes","var, name, or data must be set."
+    "name","Variable Name","Yes","var, name, or data must be set."
+    "var","Variable Name","Yes","var, name, or data must be set."
+    "data","Variable Name","Yes","var, name, or data must be set."
 
 
 * Use case
@@ -1000,7 +1000,7 @@ If enable the implode, 'c o f f e e'  will be transformed to 'coffee'.
 .. code:: xml
 
    <category>
-       <pattern>Implode the acronym *</pattern>
+       <pattern>Implode *</pattern>
        <template>
            <implode />
        </template>
@@ -1082,7 +1082,7 @@ json
 [custom]
 
 | This is a function for using JSON in AIML.
-| Use to leverage JSON data for use with :doc:`SubAgent<SubAgent>`, :doc:`Metadata<Metadata>`, :doc:`NLU<NLU>`  (intent recognition),etc.
+| Use to leverage JSON data for use with :doc:`SubAgent<SubAgent>`, :doc:`metadata<Metadata>`, :doc:`NLU<NLU>`  (intent recognition),etc.
 | See :doc:`JSON <JSON>` for more information.
 
 | The variable name specified in name/var/data of the attribute/child element is the variable name defined in get/set.
@@ -1311,7 +1311,7 @@ list
 ----------
 [2.1]
 
-The link element is a rich media element that returns the elements described in item in list format.
+The list element is a rich media element that returns the elements described in item in list format.
 It can describe the contents of the list to the item of the child element.
 Also it is possible to nest the item with list.
 
@@ -1413,7 +1413,7 @@ Changes half-width alphabetic characters to lowercase.
    <category>
        <pattern>HELLO *</pattern>
        <template>
-           HELLO <lowercase><star /></lowercase>
+           HELLO <lowercase />
        </template>
    </category>
 
@@ -1466,7 +1466,7 @@ nluintent
 [custom]
 
 | This function is used to obtain intent information for NLU results.
-| Values are returned only if there is an NLU result. Therefore, it is basically used in template when the category that specified  :ref:`nlu tag<pattarn_nlu>` in pattern matches.
+| Values are returned only if there is an NLU result. Therefore, it is basically used in template when the category that specified  :ref:`nlu tag<pattern_nlu>` in pattern matches.
 | See :doc:`NLU <NLU>`  for more information.
 
 * Attribute
@@ -2165,7 +2165,7 @@ Capitalises the first word of the sentence and sets all other words to lowercase
        </template>
    </category>
 
-| Input: CORRECT THIS PleAse tEll Us The WeSthEr ToDay.
+| Input: CORRECT THIS PleAse tEll Us The WeAthEr ToDay.
 | Output: Please tell us the weather today.
 
 
@@ -2325,7 +2325,7 @@ See :doc:`SubAgent<SubAgent>` for more information on using sraix.
     :widths: 10,10,5,75
 
     "service","String","No","The service name of the custom external service."
-    "botid","String","No","The bot name published on the Dialog Platform."
+    "botid","String","No","The bot ID published on the Dialog Platform."
 
 * Use case
 
@@ -2351,8 +2351,8 @@ star
 [1.0]
 
 | The star element is a description that uses user input from wildcards.
-| The index attribute provides the ability to access each individual match in the sentence. Wildcards include the one or more characters  ``*`` and  ``_`` the zero or more characters ``^`` and ``#`` .
-| The Index also includes strings that correspond to ``set`` , ``iset`` , ``regex`` , ``bot`` and bot elements of pattern elements.
+| The index attribute provides the ability to access each individual match in the sentence. Wildcards include the one or more characters  ``*`` and  ``_`` the zero or more characters ``^`` and ``#`` , and index(1~) is displayed in order from the beginning.
+| The index also includes strings that correspond to ``set`` , ``iset`` , ``regex`` , ``bot`` and bot elements of pattern elements.
 | If no such information exists, an empty string is returned.
 
 * Attribute
@@ -2454,6 +2454,16 @@ thatstar
 | The that element can use the full set of wildcard matching that is available in the  ``pattern``　element. These matches are accessed in the same way as using  ``<star />`` , but for that element, we use  ``<thatstar />`` .
 | If retrieval fails, an empty string is returned.
 
+
+* Attribute
+
+.. csv-table::
+    :header: "Parameter","Type","Required","Description"
+    :widths: 10,10,5,75
+
+    "index","String","No","Input number. An alternative form with no attributes implies the use of index='1'."
+
+
 * Use case
 
 .. code:: xml
@@ -2508,6 +2518,16 @@ topicstar
 | Use the topicstar element as a wildcard for the ``topic`` .
 | The topic can use the full set of wildcard matching that is available in the pattern. These matches are accessed in the same way as using  ``<star />`` , but for the topic, we use  ``<topicstar />`` .
 | It is also possible to specify "index" for the attribute. If retrieval fails, an empty string is returned.
+
+
+* Attribute
+
+.. csv-table::
+    :header: "Parameter","Type","Required","Description"
+    :widths: 10,10,5,75
+
+    "index","String","No","Input number. An alternative form with no attributes implies the use of index='1'."
+
 
 * Use case
 

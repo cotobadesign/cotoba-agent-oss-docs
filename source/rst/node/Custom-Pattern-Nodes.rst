@@ -1,8 +1,8 @@
 Custom pattern element
 =============================
 
-| The AIML parser supports the AIML tags defined in pattern_nodes.conf.
-| You can modify this file to change the implementation of the element or add your own elements.
+| The parser supports the AIML tags defined in pattern_nodes.conf.
+| You can change the implementation of the element or add your own.
 | ``Changing the implementation of an element may cause the parser to stop working or have a significant effect on performance or the behavior of other elements, so use it only after understanding the overall behavior.``
 
 
@@ -34,4 +34,4 @@ The main methods to override are the following:
 -  ``def equivalent(self, other)`` - This method tests whether a processing element is equivalent to other evaluation elements.
 -  ``def equals(self, bot, client, words, word_no)`` - This method determines whether a word matches the rules of an element.
 -  ``def to_string(self, verbose=True)`` - This method converts element information to a string representation for debugging or logging.
--  ``def to_xml(self, bot, clientid)`` - Converts element content to XML format. This method is used when outputting to `Braintree` in XML format.
+-  ``def to_xml(self, bot, clientid)`` - This method converts the content of an element to XML format and uses it to output to Braintree in XML format.

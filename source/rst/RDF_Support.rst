@@ -5,17 +5,14 @@ RDF support
 | The basic data structure of RDF is a set of 3 pieces of data called "triple", each of which consists of a subject (subject), a predicate (predicate), and an object (object).
 | For more information, see `RDF Concepts And Abstract <https://www.w3.org/TR/2004/REC-rdf-concepts-20040210/>`__ .
 
-| The RDF entity is composed of 3 elements, and this program supports RDF support in the form of "triple".
 | The related AIML tags are addtriple, deletetriple, select, tuple, uniq.
 
-Each "triple" represents a relationship between a subject (subject), a predicate (predicate), and an object (object). 
-This triplet is called an element.
 
 AIML triple file
 ----------------------------------------
 
-| Users can store RDF elements in the form "triple". "triple" is 1 line of text consisting of Subject, Predicate, and Object, separated by a colon ':'.
-| The following example is the RDF definition of an airplane.
+| "triple" is a single line of text with the subject, predicate and object separated by a colon ':'. In this program, this line is referred to as an element.
+| Explain the RDF definition with an airplane example.
 | In this definition, "subject" is listed as "AIRPLANE" and a number of "predicate" describe each value ("object").
 
 ::
@@ -116,7 +113,7 @@ This includes not only elements added by addtriple, but also elements read from 
      <subj>ant</subj><pred>sound</pred><obj>scratch</obj>
    </deletetriple>
 
-| If you specify three elements, only the elements that match all are deleted.
+| If you specify three elements (subject, predicate, and object), only the elements that match all of them will be deleted.
 | If only subject and predicate are specified, matching elements are removed, regardless of the value of object.
 | If only subject is specified, all elements matching that subject are removed.
 
@@ -154,7 +151,7 @@ Searching by Variable
 
 | If you want to return multiple elements or receive a list of matching elements, you must use variables.
 | Variables are defined in the contents of the vars tag and are prefixed with the variable name "?".
-| The target to be obtained by the variable is specified by setting the variable in the tag of the triple element in the query <q>.
+| The query <q> allows you to set a variable in the tag of an element of triple.
 | In the following case, variable:?x is subject, variable:?y is predicate, variable:?z is the object to store.
 
 .. code:: xml
@@ -164,7 +161,7 @@ Searching by Variable
        <q><subj>?x</subj><pred>?y</pred><obj>?z</obj></q>
    </select>
 
-| By using a variable, you can get all the triples that match the specified data and get the data combination that corresponds to that variable.
+| You can get the data corresponding to the variable from all the triples that match the specified data.
 | The following example searches for the number of feet (legs) in an animal.
 
 .. code:: xml
@@ -211,7 +208,7 @@ Data Retrieval
 | In this case, the following contents are set in tuples.
 | [[["?x", "BAT"], ["?y", "eee"]], [["?x", "BEAR"], ["?y", "grrrrr"]], [["?x", "BUFFALO"], ["?y", "moo"]], [["?x", "CAT"], ["?y", "meow"]], [["?x", "CHICKEN"], ["?y", "cluck cluck"]], [["?x", "DOLPHIN"], ["?y", "meep meep"]], [["?x", "FISH"], ["?y", "bubble bubble"]], [["?x", "DOG"], ["?y", "woof"]]]
 
-If you want to get the data set in a variable, you can use the 'tuple' element as a child element of the 'get' tag and get the data generated from the 'select' element described above.
+To get the data generated from the 'select' element described above, use the 'tuple' element to get the 'get' tag as a child element.
 
 .. code:: xml
 

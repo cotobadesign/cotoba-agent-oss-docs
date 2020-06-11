@@ -1,13 +1,11 @@
-pre/post processor
+Pre/Post Processors
 ============================
 
-| There are two types of processors in the dialog engine: pre-processor and post-processor.
+| There are two types of processors in the dialog engine: Pre Processor and Post Processor.
 | It is used when the utterance sentence needs to be processed before the dialog processing in the dialog engine, and when the response sentence from the dialog engine needs to be processed before the return.
 
--  `Pre Processors <#pre-processors>`__  are preprocessors that process utterance sentences before they are processed in the engine.
--  `Post Processors <#post-processors>`__ are post-processing processors for response sentences before they are returned to the end user.
-
-
+- The `Pre Processors <#pre-processors>`__  are processors that pre-process strings before processing them internally in the dialogue engine.
+- The `Post Processors <#post-processors>`__ are processors that post-process strings before they are returned by the API for the response sentences that have been interacted with inside the dialog engine.
 Pre Processors
 -----------------------------
 

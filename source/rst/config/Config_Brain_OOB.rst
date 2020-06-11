@@ -4,7 +4,7 @@ OOB Settings
 OOB (Out of Band) processing requires a Python class for each OOB child element used.
 This class processes OOB commands and executes the necessary commands on the client side.
 
-The default implementation class. In the execution function, only argument check is performed, and no specific action is performed.
+The following is the default implementation class. In the execution function, only argument check is performed, and no specific action is performed.
 In practice, each system requires its own implementation.
 
 .. code:: yaml

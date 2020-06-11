@@ -33,7 +33,7 @@ If the dialog API data is given in the dialog API from the client,
 ..  code:: json
 
     {
-        "locale": "ja-JP",
+        "locale": "en-US",
         "time": "2018-07-01T12:18:45+09:00",
         "userId": "E8BDF659B007ADA2C4841EA364E8A70308E03A71",
         "topic": "*",
@@ -57,7 +57,7 @@ The handling in the scenario is as follows.
         </category>
     </aiml>
 
-| Input: api variables
-| Output: ja-JP,2018-07-01T12:18:45+09:00,E8BDF659B007ADA2C4841EA364E8A70308E03A71,Hello
+| Input: Hello
+| Output: en-US,2018-07-01T12:18:45+09:00,E8BDF659B007ADA2C4841EA364E8A70308E03A71,Hello
 
-For information about metadata, see :doc:`Metadata <Metadata>` .
+For information about metadata, see :doc:`metadata <Metadata>` .
