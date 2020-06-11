@@ -179,6 +179,4 @@ epub_copyright = copyright
 epub_exclude_files = ['search.html']
 
 
-# -- Extension configuration -------------------------------------------------
-html_theme = 'sphinx_rtd_theme'
-html_style = "css/custom_theme.css"
+html_theme = 'default'
