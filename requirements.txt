@@ -4,5 +4,5 @@ sphinxcontrib-websupport==1.1.0
 msmb_theme==1.2.0
 rtcat-sphinx-theme==0.1.1
 sphinxjp.themes.trstyle==0.1.1
-lxml==4.2.5
+lxml==4.6.2
 pandoc==1.0.2
